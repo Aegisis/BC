@@ -1,0 +1,26 @@
+//SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.0;
+
+contract singer{
+    string n;
+    string[2] so;
+    function setN(string memory a, string[2] memory arr) public {
+        n = a;
+        so = arr;
+    }
+}
+
+contract song is singer{
+    function getVal() public view returns (string memory, string[2] memory){
+        return (n, so);
+    }
+}
+
+contract test{
+    song s = new song();
+    function tInherit() public returns(string memory, string[2] memory){
+        s.setN("Iqlipse Nova", ["Savera", "Dil Besabar"]);
+        return s.getVal();
+    }
+}
